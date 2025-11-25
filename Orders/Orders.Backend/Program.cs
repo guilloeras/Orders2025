@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Orders.Backend.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-//builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer("name=LocalConnection"));
+
 
 var app = builder.Build();
 
@@ -17,13 +20,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(g => g.SwaggerEndpoint("openapi/v1.json", "MyApiG V1"));
 }
 
-/***/
 
-//app.UseSwagger();
-
-//app.UseSwaggerUI();
-
-/***/
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

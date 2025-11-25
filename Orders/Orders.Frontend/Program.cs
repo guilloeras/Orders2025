@@ -1,5 +1,5 @@
 using MudBlazor.Services;
-using Order.Frontend.Components;
+using Orders.Frontend.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
